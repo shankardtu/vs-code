@@ -1,59 +1,70 @@
-```
-# Installing Visual Studio Code Extensions
 
-This script automates the process of installing a list of Visual Studio Code extensions on macOS and Linux operating systems.
+# Installing Visual Studio Code Extensions Script
 
-## Usage
+This script simplifies the installation of Visual Studio Code (VSCode) extensions, ensuring that you can quickly set up your development environment with your preferred tools. It is compatible with macOS and Linux operating systems.
 
-Follow these steps to use the script:
+## Prerequisites
 
-1. **Copy Script**: Copy the entire script provided below.
+- Ensure you have Visual Studio Code installed on your system.
+- Have Terminal access to execute shell commands.
 
-2. **Create a File**: Open a text editor and paste the copied script into a new file. Save the file with a `.sh` extension (e.g., `install_extensions.sh`).
+## Installation Steps
 
-3. **Set Visual Studio Code Path**: If Visual Studio Code is not already in your system PATH, follow these steps to set it:
+### 1. Copy the Script
+Begin by copying the script provided in the "Script" section below.
 
-    - Open Terminal.
-    
-    - Run the following command to find the Visual Studio Code path:
-      ```
-      find /Applications -name code
-      ```
-      or
-      ```
-      find /usr/share -name code
-      ```
-      
-    - Once you find the path to the `code` binary, follow the appropriate steps based on your shell:
-      - For Bash: Add the following line to your `.bashrc` or `.bash_profile` file:
-        ```
-        export PATH="/path/to/visual-studio-code/bin:$PATH"
-        ```
-      - For Zsh: Add the following line to your `.zshrc` file:
-        ```
-        export PATH="/path/to/visual-studio-code/bin:$PATH"
-        ```
+### 2. Create a Shell Script File
+- Open a text editor of your choice.
+- Paste the copied script into a new file.
+- Save this file with a `.sh` extension, such as `install_extensions.sh`, to denote it's a shell script.
 
-4. **Make Script Executable**: Open Terminal and navigate to the directory where the script file is saved. Run the following command to make the script executable:
+### 3. Ensure VSCode is in Your PATH
+For the script to run correctly, the `code` command must be accessible from your Terminal. If it's not already, follow these steps:
+
+1. Open Terminal.
+2. Use one of the following commands to locate the Visual Studio Code application:
+   ```shell
+   find /Applications -name code
    ```
-   chmod +x install_extensions.sh
+   or
+   ```shell
+   find /usr/share -name code
    ```
+3. Once you have the path, add it to your shell's configuration file:
+   - **Bash Users**: Append the following line to your `.bashrc` or `.bash_profile`:
+     ```shell
+     export PATH="/path/to/visual-studio-code/bin:$PATH"
+     ```
+   - **Zsh Users**: Append the following line to your `.zshrc` file:
+     ```shell
+     export PATH="/path/to/visual-studio-code/bin:$PATH"
+     ```
 
-5. **Run Script**: Execute the script by running the following command in Terminal:
-   ```
-   ./install_extensions.sh
-   ```
+### 4. Make the Script Executable
+- Navigate to the directory containing your script file in Terminal.
+- Run the command below to grant execution permissions:
+  ```shell
+  chmod +x install_extensions.sh
+  ```
 
-6. **Wait for Completion**: The script will install all the listed extensions automatically. Wait for the installation process to complete.
+### 5. Execute the Script
+- Run the script by typing:
+  ```shell
+  ./install_extensions.sh
+  ```
+- The script will proceed to automatically install the listed VSCode extensions.
 
-7. **Verification**: After the script finishes execution, open Visual Studio Code and verify that the installed extensions are available.
+### 6. Wait for the Installation to Complete
+The script installs each extension sequentially. Wait until it finishes.
+
+### 7. Verify the Installation
+- Open VSCode and check if the new extensions are installed and available for use.
 
 ## Script
-
 ```bash
 #!/bin/bash
 
-# List of extensions
+# Extensions list
 extensions=(
     "aaron-bond.better-comments"
     "batisteo.vscode-django"
@@ -103,6 +114,13 @@ if command -v code &> /dev/null; then
     done
     echo "All extensions installed successfully."
 else
-    echo "Visual Studio Code installation failed. Please check your system configuration."
+    echo "Visual Studio Code not found. Please check your installation and PATH."
 fi
 ```
+
+## Troubleshooting
+
+- **Command not found**: Ensure `code` is in your PATH as described in step 3.
+- **Permissions error**: Verify the script is executable as described in step 4.
+
+For further assistance, consult the Visual Studio Code documentation or your system's user manual.
