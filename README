@@ -1,0 +1,110 @@
+Certainly! Here's the README text ready for copy-pasting:
+
+```
+# Installing Visual Studio Code Extensions
+
+This script automates the process of installing a list of Visual Studio Code extensions on macOS and Linux operating systems.
+
+## Usage
+
+Follow these steps to use the script:
+
+1. **Copy Script**: Copy the entire script provided below.
+
+2. **Create a File**: Open a text editor and paste the copied script into a new file. Save the file with a `.sh` extension (e.g., `install_extensions.sh`).
+
+3. **Set Visual Studio Code Path**: If Visual Studio Code is not already in your system PATH, follow these steps to set it:
+
+    - Open Terminal.
+    
+    - Run the following command to find the Visual Studio Code path:
+      ```
+      find /Applications -name code
+      ```
+      or
+      ```
+      find /usr/share -name code
+      ```
+      
+    - Once you find the path to the `code` binary, follow the appropriate steps based on your shell:
+      - For Bash: Add the following line to your `.bashrc` or `.bash_profile` file:
+        ```
+        export PATH="/path/to/visual-studio-code/bin:$PATH"
+        ```
+      - For Zsh: Add the following line to your `.zshrc` file:
+        ```
+        export PATH="/path/to/visual-studio-code/bin:$PATH"
+        ```
+
+4. **Make Script Executable**: Open Terminal and navigate to the directory where the script file is saved. Run the following command to make the script executable:
+   ```
+   chmod +x install_extensions.sh
+   ```
+
+5. **Run Script**: Execute the script by running the following command in Terminal:
+   ```
+   ./install_extensions.sh
+   ```
+
+6. **Wait for Completion**: The script will install all the listed extensions automatically. Wait for the installation process to complete.
+
+7. **Verification**: After the script finishes execution, open Visual Studio Code and verify that the installed extensions are available.
+
+## Script
+
+```bash
+#!/bin/bash
+
+# List of extensions
+extensions=(
+    "aaron-bond.better-comments"
+    "batisteo.vscode-django"
+    "bibhasdn.django-html"
+    "bigonesystems.django"
+    "boto3typed.boto3-ide"
+    "chakrounanas.turbo-console-log"
+    "chrmarti.regex"
+    "datadog.datadog-vscode"
+    "donjayamanne.githistory"
+    "dracula-theme.theme-dracula"
+    "eamodio.gitlens"
+    "esbenp.prettier-vscode"
+    "formulahendry.auto-rename-tag"
+    "formulahendry.code-runner"
+    "github.codespaces"
+    "github.copilot"
+    "github.copilot-chat"
+    "github.vscode-github-actions"
+    "johnpapa.vscode-peacock"
+    "mhutchie.git-graph"
+    "michaelcurrin.auto-commit-msg"
+    "ms-python.black-formatter"
+    "ms-python.debugpy"
+    "ms-python.python"
+    "ms-python.vscode-pylance"
+    "ms-vscode.cmake-tools"
+    "ms-vscode.cpptools"
+    "ms-vscode.cpptools-extension-pack"
+    "ms-vscode.cpptools-themes"
+    "oderwat.indent-rainbow"
+    "pnp.polacode"
+    "sourcery.sourcery"
+    "streetsidesoftware.code-spell-checker"
+    "twxs.cmake"
+    "uloco.theme-bluloco-dark"
+    "vscode-icons-team.vscode-icons"
+    "zerefdev.todo-highlighter"
+    "zhuangtongfa.material-theme"
+)
+
+# Install extensions
+if command -v code &> /dev/null; then
+    echo "Installing extensions..."
+    for extension in "${extensions[@]}"; do
+        code --install-extension "$extension"
+    done
+    echo "All extensions installed successfully."
+else
+    echo "Visual Studio Code installation failed. Please check your system configuration."
+fi
+```
